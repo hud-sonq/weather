@@ -4,7 +4,7 @@
       <div v-if="!weatherData" class="weather-input">
         <h1>Weather Retrieve</h1>
         <input v-model="city" @input="searchCity" placeholder="Enter city"/>
-        <button style="background-color: green; margin-top: 25px; padding: 10%;">Go</button>
+        <button @click="getWeather" style="background-color: green; margin-top: 25px; padding: 10%;">Go</button>
       </div>
     </div>
     <div v-if="weatherData" class="centered-child">
@@ -16,16 +16,16 @@
 </template>
   
 <script setup>
-import dotenv from 'dotenv'
+const config = useRuntimeConfig();
 import { ref } from 'vue';
 import axios from 'axios';
-  
+
+const apiKey = config.public.api;
 const city = ref('');
 const weatherData = ref(null);
 const error = null;
-  
+
 const getWeather = () => {
-    console.log(process.env);
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=${apiKey}`;
     axios
       .get(apiUrl)
