@@ -14,14 +14,7 @@ You'll need an openweather API key.
 Also make sure to install the dependencies:
 
 ```bash
-# yarn...
-yarn install
-
-# OR npm...
-npm install
-
-# OR pnpm...
-pnpm install --shamefully-hoist
+npm install 
 ```
 
 ## Dev testing
